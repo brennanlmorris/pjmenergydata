@@ -1,47 +1,87 @@
-# Energy Consumption Analysis Project
+Energy Consumption Analysis Project
 
-## Overview
-This project analyzes hourly energy consumption data from American Electric Power (AEP) spanning from December 2004 to January 2018. The analysis explores patterns in energy consumption across different time scales including hourly, seasonal, and yearly trends.
+Overview
 
-## Data Description
-- Source: AEP hourly energy consumption data
-- Time period: 2004-2018
-- Variables: 
-  - Datetime: Hourly timestamps
-  - AEP_MW: Energy consumption in megawatts
-- Total observations: 121,273
+This project analyzes historical energy consumption data from American Electric Power (AEP) from 2004 to 2018. The analysis focuses on understanding load patterns, seasonal variations, and system utilization through various statistical methods and visualizations.
 
-## Analysis Steps
+Dataset
 
-### 1. Initial Data Processing
-- Converted timestamp data to datetime format
-- Created hourly, monthly, and seasonal aggregations
-- Calculated basic statistics including mean, standard deviation, min, and max values
+Source: AEP hourly energy consumption data
+Time Period: 2004-2018
+Variables: Datetime and energy consumption (MW)
+Size: 121,273 hourly observations
 
-### 2. Hourly Pattern Analysis
-- Created visualizations of average consumption by hour of day
-- Identified peak and off-peak usage hours
-- Found significant differences between peak (7am-11pm) and off-peak hours
+Key Analyses
 
-### 3. Seasonal Analysis
-- Conducted one-way ANOVA test showing significant differences between seasons (F-statistic: 4183.76, p-value < 0.001)
-- Performed Tukey's HSD test to identify specific seasonal differences
-- Key finding: Winter and Summer show highest consumption, with Spring having lowest average consumption
+1. Time-Based Patterns
 
-### 4. Time Series Decomposition
-- Decomposed data into trend, seasonal, and residual components
-- Identified downward trend in consumption over the study period
-- Observed consistent seasonal patterns in usage
+Peak usage occurs at 19:00 (7 PM)
+Minimum usage occurs at 04:00 (4 AM)
+Clear distinction between peak hours (7 AM - 11 PM) and off-peak hours
+Statistically significant difference between peak and off-peak consumption (t-test p-value < 0.05)
 
-### 5. Year-over-Year Analysis
-- Calculated yearly averages and percentage changes
-- Key findings:
-  - Highest consumption: 2007 (16,645.52 MW average)
-  - Lowest consumption: 2017 (14,483.74 MW average)
-  - Notable decrease in 2009 (-7.76%), possibly due to financial crisis
-  - Recent uptick in 2018 (+5.57%)
+2. Seasonal Analysis
+Average consumption by season:
 
-## Technologies Used
-- Python
-- Libraries: pandas, numpy, matplotlib, seaborn, scipy, statsmodels
-- Statistical tests: ANOVA, Tukey's HSD
+Winter: 16,598 MW
+Summer: 15,837 MW
+Fall: 15,107 MW
+Spring: 14,482 MW
+
+Seasonal patterns show statistically significant differences (ANOVA F-stat: 4183.76, p-value < 0.001)
+
+3. Load Duration Curve Analysis
+System Metrics:
+
+Peak Load: 25,695 MW
+Base Load: 9,581 MW
+Average Load: 15,499 MW
+Load Factor: 60.32%
+
+4. Load Distribution:
+
+90th percentile: 19,064 MW
+Median Load: 15,310 MW
+10th percentile: 12,197 MW
+
+Key Findings:
+
+Extreme peaks (>90% of peak load) occur only 0.26% of the time
+System operates above 80% of peak load 3.63% of the time
+Load exceeds average 46.92% of the time
+
+1. Long-Term Trends
+
+Overall declining trend in energy consumption from 2004 to 2018
+Significant year-to-year variations observed
+Notable decline during 2009 (-7.76% compared to previous year)
+Despite some yearly increases, the long-term trajectory shows a general downward trend
+This decline suggests possible improvements in energy efficiency or changes in consumption patterns
+
+2. Technical Implementation
+
+Language: Python
+Key Libraries: pandas, numpy, matplotlib, seaborn, scipy, statsmodels
+Statistical Methods: T-tests, ANOVA, Tukey's HSD, seasonal decomposition
+
+3. Key Insights
+
+System Efficiency: Load factor of 60.32% indicates moderate system efficiency, typical for utility operations
+Capacity Utilization: System requires significant flexible capacity (~10,000 MW) to handle variations
+Peak Management: Rare occurrence of extreme peaks suggests potential for demand response programs
+Seasonal Patterns: Winter shows highest consumption, with significant variations across seasons
+
+4. Potential Applications
+
+Capacity planning optimization
+Peak load management strategies
+Seasonal demand forecasting
+Energy efficiency program development
+Rate structure design
+
+5. Future Work
+
+Integration of weather data for deeper analysis
+Economic impact analysis of load patterns
+Grid reliability metrics
+Detailed ramp rate analysis
